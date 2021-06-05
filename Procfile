@@ -1,1 +1,1 @@
-web: dominicksavio/roadmakergo
+web: bin/roadmakergo

@@ -1,4 +1,4 @@
-module github.com/roadmaker
+module dominicksavio/roadmakergo
 
 go 1.13
 

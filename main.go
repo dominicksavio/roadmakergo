@@ -45,10 +45,8 @@ func main() {
 	router.POST("/save_form", FormHandler)
 	router.POST("/get_image_ip", ImageHandler) 
 	router.GET("/get_image", GetImageHandler) 
-	port, err := os.Getenv("PORT")
-    if err != nil {
-        port = "3000"
-    } 
+	port := os.Getenv("PORT")
+    
 
     router.Run(":"+port)
     // router.Run(":8080")

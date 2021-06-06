@@ -9,7 +9,7 @@ import (
 	"time"
 	"crypto/sha1"
 	"encoding/hex"
-	"os"
+	// "os"
 	"github.com/gin-contrib/cors"
 	
 	"github.com/gin-gonic/gin"
@@ -46,7 +46,8 @@ func main() {
 	router.POST("/get_image_ip", ImageHandler) 
 	router.GET("/get_image", GetImageHandler) 
 	port := os.Getenv("PORT")
-    
+    if(port!="")
+    	port:=""
 
     router.Run(":"+port)
     // router.Run(":8080")
@@ -118,7 +119,7 @@ func FormHandler(c *gin.Context) {
 } 
 func DBconnect() *sql.DB {
 
-	db, err := sql.Open("postgres", "user=postgres password=postgres dbname=roadmakerDB sslmode=disable host=34.93.43.244")
+	db, err := sql.Open("postgres", "user=postgres password=postgres dbname=roadmakerDB sslmode=disable host=34.93.43.244 port=5432")
 	if err != nil {
 		log.Println(err)
 	}

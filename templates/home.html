@@ -74,6 +74,7 @@
         <form ref="imgform">
           <div>
             <p><label>Or Browse From File:</label></p>
+             
             <p><input type="file" name="myfile" onchange="encodeImageFileAsURL(this)"></p>
           </div>
 
@@ -102,9 +103,11 @@
       // var xhttp = new XMLHttpRequest();
       $.getJSON("https://lit-ocean-55039.herokuapp.com/https://api.ipify.org?format=json",function(data) {
         ip = data.ip
-        axios.post("http://localhost:8080/save_form", JSON.stringify(
+        axios.post("https://roadmakergo.herokuapp.com/save_form", JSON.stringify(
+        // axios.post("https://localhost:8080/save_form", JSON.stringify(
           {
             "ipaddress": ip,
+            "quality": quality,
             "image": imagestring
           }
         )).then((res1) => {

@@ -43,8 +43,8 @@ func main() {
 	router.GET("/get_form", GetFormHandler)
 	router.GET("/", GetFormHandler)
 	router.POST("/save_form", FormHandler)
-	router.POST("/get_image_ip", ImageHandler) 
-	router.GET("/get_image", GetImageHandler) 
+	// router.POST("/get_image_ip", ImageHandler) 
+	// router.GET("/get_image", GetImageHandler) 
 	port := os.Getenv("PORT")
     // if(port!="")
     // 	port:=""

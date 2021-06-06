@@ -46,8 +46,8 @@ func main() {
 	router.POST("/get_image_ip", ImageHandler) 
 	router.GET("/get_image", GetImageHandler) 
 	port := os.Getenv("PORT")
-    if(port!="")
-    	port:=""
+    // if(port!="")
+    // 	port:=""
 
     router.Run(":"+port)
     // router.Run(":8080")

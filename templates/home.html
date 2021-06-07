@@ -163,7 +163,7 @@
 <body>
 
   <h1>RoadMaker Anonymous</h1>
-    
+    <textarea onchange="set()" placeholder="Enter the problem" rows="4" cols="50" id="desc" name="comment" required="true"></textarea>
     <div class="contentarea">
         
         <div class="camera">
@@ -199,8 +199,13 @@
 }
 
 
+
     var imagestring = ""
     var ip = "";
+    var desc = "";
+function set(){
+    desc=document.getElementById("desc");
+}
     function encodeImageFileAsURL(element) {
       let file = element.files[0];
       let reader = new FileReader();
@@ -217,7 +222,7 @@
         axios.post("https://roadmakergo.herokuapp.com/save_form", JSON.stringify(
         // axios.post("https://localhost:8080/save_form", JSON.stringify(
           {
-            "desc":document.getElementById("desc");
+            "desc":desc,
             "ipaddress": ip,
             "image": imagestring
           }

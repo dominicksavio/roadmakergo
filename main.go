@@ -78,8 +78,7 @@ func FormHandler(c *gin.Context) {
 
 	db := DBconnect()
 	defer db.Close()
-	print("hello"+data.Desc)
-	_, err = db.Exec("insert into public.imagesHashed(ipaddress_user,image,created_date,hashimage) values($1,$2,$3,$4)", data.IpAddress, data.Image, date, hex.EncodeToString(hash1))
+	_, err = db.Exec("insert into public.imagesHashed(ipaddress_user,image,created_date,hashimage,desc) values($1,$2,$3,$4,$5)", data.IpAddress, data.Image, date, hex.EncodeToString(hash1),data.Desc)
 	
 	if err != nil {
 		fmt.Println("here")

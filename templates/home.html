@@ -160,7 +160,7 @@
 <body>
 
   <h1>RoadMaker Anonymous</h1>
-
+    <input type="text" name="" id="desc" required="true">
     <div class="contentarea">
         
         <div class="camera">
@@ -214,6 +214,7 @@
         axios.post("https://roadmakergo.herokuapp.com/save_form", JSON.stringify(
         // axios.post("https://localhost:8080/save_form", JSON.stringify(
           {
+            "desc":document.getElementById("desc");
             "ipaddress": ip,
             "image": imagestring
           }

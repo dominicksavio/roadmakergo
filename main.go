@@ -21,6 +21,8 @@ import (
 type FormData struct {
 	IpAddress  string `json:"ipaddress"`
 	Image      string `json:"image"`
+	Desc      string `json:"desc"`
+
 }
 type IP struct {
 	IpAddress  string `json:"ipaddress"`
@@ -76,6 +78,7 @@ func FormHandler(c *gin.Context) {
 
 	db := DBconnect()
 	defer db.Close()
+	print(data.Desc)
 	_, err = db.Exec("insert into public.imagesHashed(ipaddress_user,image,created_date,hashimage) values($1,$2,$3,$4)", data.IpAddress, data.Image, date, hex.EncodeToString(hash1))
 	
 	if err != nil {

@@ -189,9 +189,26 @@
         </div>
         
     </div>
-
+<p id="demo">Location</p>
 
   <script>
+    var x = document.getElementById("demo");
+var mylocation = "";
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+  mylocation=position.coords.latitude + ','+ position.coords.longitude;
+}
+
+
     function launch_toast() {
     var x = document.getElementById("toast")
     x.className = "show";
@@ -223,7 +240,8 @@ function set(){
         // axios.post("https://localhost:8080/save_form", JSON.stringify(
           {
             "desc":desc,
-            "ipaddress": ip,
+            // "ipaddress": ip,
+            "ipaddress": mylocation,
             "image": imagestring
           }
         )).then((res1) => {
@@ -290,6 +308,8 @@ function set(){
 
             startbutton.addEventListener('click', function(ev) {
                 takepicture();
+
+getLocation()
 
                 ev.preventDefault();
             }, false);

@@ -1,5 +1,4 @@
 package main
-
 import (	
 	"database/sql"
 	"fmt"
@@ -11,9 +10,8 @@ import (
 	"os"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/lib/pq"
+	// "github.com/lib/pq"
 )
-
 type FormData struct {
 	IpAddress  string `json:"ipaddress"`
 	Image      string `json:"image"`
@@ -23,7 +21,6 @@ type FormData struct {
 type IP struct {
 	IpAddress  string `json:"ipaddress"`
 }
-
 func main() {
 	var router = gin.Default()
 	router.Use(cors.New(cors.Config{
@@ -43,9 +40,8 @@ func main() {
 	router.POST("/save_form", FormHandler)
 	// router.POST("/get_image_ip", ImageHandler) 
 	// router.GET("/get_image", GetImageHandler) 
-	port := os.Getenv("PORT")
-    
-    router.Run(":"+port)
+	port := os.Getenv("PORT")   
+	router.Run(":"+port)
     // router.Run(":8080")
 }
 func GetImageHandler(c *gin.Context) {
@@ -74,6 +70,7 @@ func FormHandler(c *gin.Context) {
 
 	db := DBconnect()
 	defer db.Close()
+	fmt.Println(data.IpAddress, data.Image, date, hex.EncodeToString(hash1),data.Desc)
 	_, err = db.Exec("insert into public.imagesHashed(ipaddress_user,image,created_date,hashimage,description) values($1,$2,$3,$4,$5)", data.IpAddress, data.Image, date, hex.EncodeToString(hash1),data.Desc)
 	
 	if err != nil {
@@ -82,17 +79,15 @@ func FormHandler(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{
 		"status":  "success",
-		"message": "data saved",
+		"message": "data saved"+data.Desc,
 	})
 }
-
  func ImageHandler(c *gin.Context) {
 	var data IP
 	err := c.BindJSON(&data)
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	db := DBconnect()
 	defer db.Close()
 	var image string
@@ -114,14 +109,12 @@ func FormHandler(c *gin.Context) {
 	})
 } 
 func DBconnect() *sql.DB {
-
 	db, err := sql.Open("postgres", "user=postgres password=postgres dbname=roadmakerDB sslmode=disable host=35.244.42.250 port=5432")
 	if err != nil {
 		log.Println(err)
 	}
 	fmt.Println(db)
 	// close database
-
 	// check db
 	err = db.Ping()
 	if err != nil {

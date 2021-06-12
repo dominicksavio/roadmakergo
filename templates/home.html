@@ -241,8 +241,9 @@ function set(){
       // var xhttp = new XMLHttpRequest();
       $.getJSON("https://lit-ocean-55039.herokuapp.com/https://api.ipify.org?format=json",function(data) {
         ip = data.ip
+        set()
         axios.post("https://roadmakergo.herokuapp.com/save_form", JSON.stringify(
-        // axios.post("https://localhost:8080/save_form", JSON.stringify(
+        // axios.post("http://localhost:8080/save_form", JSON.stringify(
           {
             "desc":desc,
             // "ipaddress": ip,

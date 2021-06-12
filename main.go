@@ -1,7 +1,6 @@
 package main
 
-import (
-	
+import (	
 	"database/sql"
 	"fmt"
 	"log"
@@ -11,11 +10,8 @@ import (
 	"encoding/hex"
 	"os"
 	"github.com/gin-contrib/cors"
-	
 	"github.com/gin-gonic/gin"
-	_ "github.com/lib/pq"
-	
-
+	"github.com/lib/pq"
 )
 
 type FormData struct {

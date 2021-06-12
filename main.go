@@ -10,7 +10,7 @@ import (
 	"os"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	// "github.com/lib/pq"
+	"github.com/lib/pq"
 )
 type FormData struct {
 	IpAddress  string `json:"ipaddress"`

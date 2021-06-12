@@ -9,7 +9,7 @@ import (
 	"time"
 	"crypto/sha1"
 	"encoding/hex"
-	// "os"
+	"os"
 	"github.com/gin-contrib/cors"
 	
 	"github.com/gin-gonic/gin"
@@ -47,10 +47,10 @@ func main() {
 	router.POST("/save_form", FormHandler)
 	// router.POST("/get_image_ip", ImageHandler) 
 	// router.GET("/get_image", GetImageHandler) 
-	// port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
     
- //    router.Run(":"+port)
-    router.Run(":8080")
+    router.Run(":"+port)
+    // router.Run(":8080")
 }
 func GetImageHandler(c *gin.Context) {
 	c.HTML(http.StatusOK, "image.html", gin.H{})

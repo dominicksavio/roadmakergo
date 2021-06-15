@@ -73,12 +73,13 @@ func FormHandler(c *gin.Context) {
 	// md5HashInBytes := md5.Sum([]byte("Sum returns bytes"))
 	// md5HashInString := hex.EncodeToString(md5HashInBytes[:])
 	// fmt.Println(md5HashInString)
-	fmt.Println("HHHHHHHHHHH")
+	fmt.Println("the Data")
 	fmt.Println(data.Desc)
-
+	fmt.Println(hex.EncodeToString(hash1))
+	fmt.Println(data.Image)
+	fmt.Println("the End")
 	db := DBconnect()
 	defer db.Close()
-	fmt.Println(data.Desc)
 	_, err = db.Exec("insert into public.imagesHashed(ipaddress_user,image,created_date,hashimage,description) values($1,$2,$3,$4,$5)", data.IpAddress, data.Image, date, hex.EncodeToString(hash1),data.Desc)
 	
 	if err != nil {

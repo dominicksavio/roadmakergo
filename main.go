@@ -76,7 +76,7 @@ func FormHandler(c *gin.Context) {
 	fmt.Println("the Data")
 	fmt.Println(data.Desc)
 	fmt.Println(hex.EncodeToString(hash1))
-	fmt.Println(data.Image)
+	// fmt.Println(data.Image)
 	fmt.Println("the End")
 	db := DBconnect()
 	defer db.Close()

@@ -78,7 +78,7 @@ func FormHandler(c *gin.Context) {
 
 	db := DBconnect()
 	defer db.Close()
-
+	fmt.Println(data.Desc)
 	_, err = db.Exec("insert into public.imagesHashed(ipaddress_user,image,created_date,hashimage,description) values($1,$2,$3,$4,$5)", data.IpAddress, data.Image, date, hex.EncodeToString(hash1),data.Desc)
 	
 	if err != nil {
@@ -102,6 +102,7 @@ func FormHandler(c *gin.Context) {
 	defer db.Close()
 	var image string
 	fmt.Println(data.IpAddress)
+
 	res, err := db.Query("select image from public.imagesHashed where ipaddress_user=$1 and created_date=(select max(created_date) from public.imagesHashed where ipaddress_user=$1)", data.IpAddress)
 	if err != nil {
 		fmt.Println(err)

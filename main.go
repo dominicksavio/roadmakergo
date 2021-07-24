@@ -122,7 +122,7 @@ func FormHandler(c *gin.Context) {
 } 
 func DBconnect() *sql.DB {
 
-	db, err := sql.Open("postgres", "user=postgres password=postgres dbname=roadmakerDB sslmode=disable host=35.244.42.250 port=5432")
+	db, err := sql.Open("postgres", "user=postgres password=postgres dbname=roadmakerDB sslmode=disable host=35.200.140.224 port=5432")
 	if err != nil {
 		log.Println(err)
 	}
